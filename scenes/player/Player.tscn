@@ -23,22 +23,6 @@ properties/2/replication_mode = 1
 atlas = ExtResource("2_gfjak")
 region = Rect2(128, 704, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tapir"]
-atlas = ExtResource("2_gfjak")
-region = Rect2(0, 832, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_alwvq"]
-atlas = ExtResource("2_gfjak")
-region = Rect2(256, 832, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p41vm"]
-atlas = ExtResource("2_gfjak")
-region = Rect2(128, 832, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hk6ki"]
-atlas = ExtResource("2_gfjak")
-region = Rect2(256, 832, 64, 64)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_k1nkd"]
 atlas = ExtResource("2_gfjak")
 region = Rect2(192, 832, 64, 64)
@@ -118,31 +102,6 @@ icon = SubResource("AtlasTexture_sjyuf")
 unique_name_in_owner = true
 layout_mode = 2
 text = "Leave Game"
-
-[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=2020466775]
-visible = false
-position = Vector2(15, 346)
-texture_normal = SubResource("AtlasTexture_tapir")
-action = "left"
-
-[node name="ForwardButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=309355761]
-visible = false
-position = Vector2(69, 292)
-texture_normal = SubResource("AtlasTexture_alwvq")
-action = "forward"
-
-[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=951269642]
-visible = false
-position = Vector2(128, 348)
-texture_normal = SubResource("AtlasTexture_p41vm")
-action = "right"
-
-[node name="BackwardButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=1682885552]
-visible = false
-position = Vector2(139.99998, 470.00003)
-rotation = 3.1305656
-texture_normal = SubResource("AtlasTexture_hk6ki")
-action = "backward"
 
 [node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=1392770055]
 position = Vector2(1019, 488)
