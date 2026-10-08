@@ -38,6 +38,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_3d.rotate_x(-event.relative.y * sensitivity)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
+	if event is InputEventScreenDrag:
+		head.rotate_y(-event.relative.x * sensitivity)	
+		camera_3d.rotate_x(-event.relative.y * sensitivity)
+		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('menu') and menu.visible == false:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
