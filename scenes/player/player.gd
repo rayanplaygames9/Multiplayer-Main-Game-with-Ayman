@@ -2,8 +2,9 @@ extends CharacterBody3D
 
 @export var sensitivity: float = 0.002
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 10.0
+const JUMP_VELOCITY = 10.0
+const GRAVITY = 30.0
 
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var head: Node3D = %Head
@@ -67,7 +68,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y -= GRAVITY * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():

@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://ouirdivr8u8k"]
 
+[ext_resource type="Texture2D" uid="uid://crjs2ejnk41xs" path="res://assets/grass.jpg" id="1_cphul"]
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3db35"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -57,7 +59,8 @@ data = PackedVector3Array(1.25, 0, 0, 1.2061, 0.125, -0.15879999, 1.2393, 0, -0.
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryffa"]
 resource_name = "GroundGrass"
 cull_mode = 2
-albedo_color = Color(0.17636351, 0.9063318, 0.1703715, 1)
+albedo_color = Color(0.15488291, 0.71290386, 0.14560685, 1)
+albedo_texture = ExtResource("1_cphul")
 roughness = 0.5
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0ryms"]
@@ -105,7 +108,7 @@ transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545
 shadow_enabled = true
 
 [node name="base_world" type="Node3D" parent="." unique_id=2013286928]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.8653822, 0, -0.55610466)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.8653822, 0, -0.55610466)
 
 [node name="Torus" type="MeshInstance3D" parent="base_world" unique_id=2007024915]
 transform = Transform3D(13.024563, 0, 0, 0, 13.024563, 0, 0, 0, 13.024563, 0, 0, 0)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bqta7emfadpxj" path="res://scenes/player/player.gd" id="1_wr5hl"]
 [ext_resource type="Texture2D" uid="uid://b1t8eqspo4bb6" path="res://assets/keyboard-&-mouse_sheet_default.png" id="2_gfjak"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_4kuee"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
 
@@ -119,27 +120,45 @@ layout_mode = 2
 text = "Leave Game"
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=2020466775]
+visible = false
 position = Vector2(15, 346)
 texture_normal = SubResource("AtlasTexture_tapir")
 action = "left"
 
 [node name="ForwardButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=309355761]
+visible = false
 position = Vector2(69, 292)
 texture_normal = SubResource("AtlasTexture_alwvq")
 action = "forward"
 
 [node name="RightButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=951269642]
+visible = false
 position = Vector2(128, 348)
 texture_normal = SubResource("AtlasTexture_p41vm")
 action = "right"
 
 [node name="BackwardButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=1682885552]
+visible = false
 position = Vector2(139.99998, 470.00003)
 rotation = 3.1305656
 texture_normal = SubResource("AtlasTexture_hk6ki")
 action = "backward"
 
 [node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=1392770055]
-position = Vector2(419, 338)
+position = Vector2(1019, 488)
+scale = Vector2(1.5, 1.5)
 texture_normal = SubResource("AtlasTexture_k1nkd")
 action = "jump"
+
+[node name="TouchControls" type="CanvasLayer" parent="CanvasLayer" unique_id=1455135204]
+
+[node name="Virtual Joystick" parent="CanvasLayer/TouchControls" unique_id=468261144 instance=ExtResource("3_4kuee")]
+offset_left = 3.9999998
+offset_top = -220.00003
+offset_right = 304.0
+offset_bottom = 80.0
+scale = Vector2(0.7, 0.7)
+action_left = "left"
+action_right = "right"
+action_up = "forward"
+action_down = "backward"
