@@ -11,6 +11,7 @@ const JUMP_VELOCITY = 4.5
 
 @onready var menu: Control = %Menu
 @onready var button_leave: Button = %ButtonLeave
+@onready var label_session: Label = %LabelSession
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -25,6 +26,7 @@ func _ready():
 		set_physics_process(false)
 		return
 	
+	label_session.text = Network.tube_client.session_id
 	camera_3d.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	button_leave.pressed.connect(func(): Network.leave_server())		
