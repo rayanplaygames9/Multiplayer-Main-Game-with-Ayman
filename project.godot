@@ -27,7 +27,7 @@ window/size/always_on_top=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/tube/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg", "res://addons/virtual_joystick_DX/plugin.cfg")
+enabled=PackedStringArray("res://addons/tube/plugin.cfg", "res://addons/virtual_joystick/plugin.cfg")
 
 [file_customization]
 

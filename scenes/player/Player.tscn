@@ -1,13 +1,41 @@
 [gd_scene format=3 uid="uid://dbcqeo103wau6"]
 
 [ext_resource type="Script" uid="uid://bqta7emfadpxj" path="res://scenes/player/player.gd" id="1_wr5hl"]
-[ext_resource type="PackedScene" uid="uid://bnrjrgeudcsej" path="res://assets/Pistol.glb" id="2_524rm"]
+[ext_resource type="PackedScene" uid="uid://bcqiry4qnstk" path="res://assets/Pistol.glb" id="2_524rm"]
 [ext_resource type="Texture2D" uid="uid://b1t8eqspo4bb6" path="res://assets/keyboard-&-mouse_sheet_default.png" id="2_gfjak"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_4kuee"]
+[ext_resource type="Texture2D" uid="uid://x7dfvdf41huq" path="res://assets/particles/star_06.png" id="3_tpg5x"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o8nba"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wr5hl"]
+
+[sub_resource type="Gradient" id="Gradient_c3xxp"]
+offsets = PackedFloat32Array(0, 0.17874396, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p41vm"]
+gradient = SubResource("Gradient_c3xxp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k1nkd"]
+angle_min = 45.00001
+angle_max = 45.00001
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_p41vm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hk6ki"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.579109, 0.5093739, 0.1776306, 1)
+albedo_texture = ExtResource("3_tpg5x")
+billboard_mode = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tapir"]
+material = SubResource("StandardMaterial3D_hk6ki")
+size = Vector2(0.5, 0.5)
+orientation = 2
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wr5hl"]
 properties/0/path = NodePath(".:position")
@@ -101,7 +129,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_npwbq"]
 resource_name = "shoot_pistol"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -156,6 +184,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Pistol" parent="Head/Camera3D" unique_id=1559865806 instance=ExtResource("2_524rm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52264214, -0.28123176, -0.5487082)
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Head/Camera3D/Pistol" unique_id=23194314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04620087, -0.30065012)
+emitting = false
+amount = 1
+lifetime = 0.6
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_k1nkd")
+draw_pass_1 = SubResource("PlaneMesh_tapir")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=447432846]
 replication_config = SubResource("SceneReplicationConfig_wr5hl")

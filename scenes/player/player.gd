@@ -1,7 +1,7 @@
 extends CharacterBody3D
 class_name Player
 
-@export var sensitivity: float = 0.002
+@export var sensitivity: float = 0.005
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 10.0
@@ -17,6 +17,7 @@ const GRAVITY = 30.0
 @onready var button_leave: Button = %ButtonLeave
 @onready var label_session: Label = %LabelSession
 @onready var button_copy_session: Button = %ButtonCopySession
+@onready var muzzle_flash: GPUParticles3D = $Head/Camera3D/Pistol/MuzzleFlash
 
 func _enter_tree() -> void:
 	set_multiplayer_authority(int(name))
@@ -50,7 +51,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
 	if event is InputEventScreenDrag:
-		head.rotate_y(-event.relative.x * sensitivity)	
+		head.rotate_y(-event.relative.x * sensitivity)
 		camera_3d.rotate_x(-event.relative.y * sensitivity)
 		camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 
@@ -66,7 +67,7 @@ func _process(_delta: float) -> void:
 		menu.hide()
 
 	if Input.is_action_just_pressed('shoot'):
-		shoot()
+		play_shoot_effects()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -103,6 +104,8 @@ func _physics_process(delta: float) -> void:
 	#var pos = global_position
 	#Global.shoot_ball.rpc_id(1, pos, facing_dir, force)
 
-func shoot():
-	Global.play_shoot_effects()
-	
+func play_shoot_effects():
+	anim_player.stop()
+	anim_player.play("shoot_pistol")
+	muzzle_flash.restart()
+	muzzle_flash.emitting = true

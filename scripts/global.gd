@@ -1,7 +1,6 @@
 extends Node
 
 var username := ''
-var player: Player
 
 var forest: Node3D
 var spawn_container: Node3D
@@ -13,7 +12,8 @@ var spawn_container: Node3D
 	#spawn_container.add_child(new_ball, true)
 	#new_ball.apply_central_impulse(dir * force)
 
-@rpc("any_peer")
-func play_shoot_effects():
-	player.anim_player.stop()
-	player.anim_player.play("shoot")
+#@rpc("any_peer")
+#func play_shoot_effects():
+	#if player:
+		#player.anim_player.stop()
+		#player.anim_player.play("shoot")
