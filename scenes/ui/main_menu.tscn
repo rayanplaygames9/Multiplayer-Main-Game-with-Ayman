@@ -39,7 +39,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="Control/Center/MarginContainer/VBoxContainer" unique_id=225050093]
 layout_mode = 2
-text = "Androo Game"
+text = "Friends Game"
 
 [node name="ButtonJoin" type="Button" parent="Control/Center/MarginContainer/VBoxContainer" unique_id=197219473]
 unique_name_in_owner = true
