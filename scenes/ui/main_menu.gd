@@ -12,7 +12,7 @@ extends CanvasLayer
 @onready var enet_menu: VBoxContainer = %EnetMenu
 @onready var tube_menu: VBoxContainer = %TubeMenu
 
-const WORLD_FOREST = preload("uid://yubh30707eb7")
+const WORLD = preload("uid://ouirdivr8u8k")
 const PLAYER = preload("uid://dbcqeo103wau6")
 
 func _ready() -> void:
@@ -44,7 +44,7 @@ func on_join():
 	add_world()
 
 func add_world():
-	var new_world = WORLD_FOREST.instantiate()
+	var new_world = WORLD.instantiate()
 	get_tree().current_scene.add_child(new_world)
 	hide()
 

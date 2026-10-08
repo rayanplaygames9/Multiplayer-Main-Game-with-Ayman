@@ -27,6 +27,8 @@ func _ready():
 		set_physics_process(false)
 		return
 	
+	if Global.username: nameplate.text = Global.username
+	
 	label_session.text = Network.tube_client.session_id
 	camera_3d.current = true
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -59,8 +61,8 @@ func _process(_delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		menu.hide()
 
-	if Input.is_action_just_pressed('shoot'):
-		shoot()	
+	#if Input.is_action_just_pressed('shoot'):
+		#shoot()	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -84,8 +86,8 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
-func shoot():
-	var facing_dir = -head.transform.basis.z
-	var force = 100
-	var pos = global_position
-	Global.shoot_ball.rpc_id(1, pos, facing_dir, force)
+#func shoot():
+	#var facing_dir = -head.transform.basis.z
+	#var force = 100
+	#var pos = global_position
+	#Global.shoot_ball.rpc_id(1, pos, facing_dir, force)

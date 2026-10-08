@@ -7,11 +7,6 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_wr5hl"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_gfjak"]
-top_radius = 0.3
-bottom_radius = 0.1
-height = 1.0
-
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_wr5hl"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -19,6 +14,9 @@ properties/0/replication_mode = 1
 properties/1/path = NodePath("Head:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
+properties/2/path = NodePath("Nameplate:text")
+properties/2/spawn = true
+properties/2/replication_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sjyuf"]
 atlas = ExtResource("2_gfjak")
@@ -58,10 +56,6 @@ mesh = SubResource("CapsuleMesh_wr5hl")
 
 [node name="Head" type="Node3D" parent="." unique_id=2071305103]
 unique_name_in_owner = true
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head" unique_id=659649992]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.4010596, -0.38197786)
-mesh = SubResource("CylinderMesh_gfjak")
 
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=2014816838]
 unique_name_in_owner = true
