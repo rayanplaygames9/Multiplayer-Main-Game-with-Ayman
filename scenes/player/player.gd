@@ -1,10 +1,13 @@
 extends CharacterBody3D
+class_name Player
 
 @export var sensitivity: float = 0.002
 
 const SPEED = 10.0
 const JUMP_VELOCITY = 10.0
 const GRAVITY = 30.0
+
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 @onready var camera_3d: Camera3D = %Camera3D
 @onready var head: Node3D = %Head
@@ -62,8 +65,8 @@ func _process(_delta: float) -> void:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		menu.hide()
 
-	#if Input.is_action_just_pressed('shoot'):
-		#shoot()	
+	if Input.is_action_just_pressed('shoot'):
+		shoot()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -84,6 +87,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+	if anim_player.current_animation == "shoot":
+		pass
+	elif input_dir != Vector2.ZERO and is_on_floor():
+		anim_player.play("move_pistol")
+	else:
+		anim_player.play("idle_pistol")
 
 	move_and_slide()
 	
@@ -92,3 +102,7 @@ func _physics_process(delta: float) -> void:
 	#var force = 100
 	#var pos = global_position
 	#Global.shoot_ball.rpc_id(1, pos, facing_dir, force)
+
+func shoot():
+	Global.play_shoot_effects()
+	

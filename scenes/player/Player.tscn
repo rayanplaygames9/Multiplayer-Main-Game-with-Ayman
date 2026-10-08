@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dbcqeo103wau6"]
 
 [ext_resource type="Script" uid="uid://bqta7emfadpxj" path="res://scenes/player/player.gd" id="1_wr5hl"]
+[ext_resource type="PackedScene" uid="uid://bnrjrgeudcsej" path="res://assets/Pistol.glb" id="2_524rm"]
 [ext_resource type="Texture2D" uid="uid://b1t8eqspo4bb6" path="res://assets/keyboard-&-mouse_sheet_default.png" id="2_gfjak"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="3_4kuee"]
 
@@ -27,6 +28,113 @@ region = Rect2(128, 704, 64, 64)
 atlas = ExtResource("2_gfjak")
 region = Rect2(192, 832, 64, 64)
 
+[sub_resource type="Animation" id="Animation_524rm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.52264214, -0.28123176, -0.5487082)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c3xxp"]
+resource_name = "idle_pistol"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.93333334),
+"transitions": PackedFloat32Array(-2, 2, -2),
+"update": 0,
+"values": [Vector3(0.52264214, -0.28123176, -0.5487082), Vector3(0.52264214, -0.37134445, -0.5487082), Vector3(0.52264214, -0.2787087, -0.5487082)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.93333334),
+"transitions": PackedFloat32Array(-2, 2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.37134284, 0, 0), Vector3(-0.13460475, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tpg5x"]
+resource_name = "move_pistol"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.52, 0.79),
+"transitions": PackedFloat32Array(2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector3(0.52264214, -0.28123176, -0.5487082), Vector3(0.63795644, -0.35815883, -0.5487082), Vector3(0.3808058, -0.26536334, -0.5487082), Vector3(0.61234635, -0.41437972, -0.5487082)]
+}
+
+[sub_resource type="Animation" id="Animation_npwbq"]
+resource_name = "shoot_pistol"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, -2),
+"update": 0,
+"values": [Vector3(0.52264214, -0.22982574, -0.5487082), Vector3(0.52264214, -0.28123176, -0.5487082)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(2, -2),
+"update": 0,
+"values": [Vector3(0.25712115, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3xxp"]
+_data = {
+&"RESET": SubResource("Animation_524rm"),
+&"idle_pistol": SubResource("Animation_c3xxp"),
+&"move_pistol": SubResource("Animation_tpg5x"),
+&"shoot_pistol": SubResource("Animation_npwbq")
+}
+
 [node name="Player" type="CharacterBody3D" unique_id=1582534974]
 collision_layer = 9
 script = ExtResource("1_wr5hl")
@@ -45,6 +153,9 @@ unique_name_in_owner = true
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=2014816838]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Pistol" parent="Head/Camera3D" unique_id=1559865806 instance=ExtResource("2_524rm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.52264214, -0.28123176, -0.5487082)
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=447432846]
 replication_config = SubResource("SceneReplicationConfig_wr5hl")
@@ -103,12 +214,6 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Leave Game"
 
-[node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer" unique_id=1392770055]
-position = Vector2(1019, 488)
-scale = Vector2(1.5, 1.5)
-texture_normal = SubResource("AtlasTexture_k1nkd")
-action = "jump"
-
 [node name="TouchControls" type="CanvasLayer" parent="CanvasLayer" unique_id=1455135204]
 
 [node name="Virtual Joystick" parent="CanvasLayer/TouchControls" unique_id=468261144 instance=ExtResource("3_4kuee")]
@@ -121,3 +226,13 @@ action_left = "left"
 action_right = "right"
 action_up = "forward"
 action_down = "backward"
+
+[node name="JumpButton" type="TouchScreenButton" parent="CanvasLayer/TouchControls" unique_id=1392770055]
+position = Vector2(1019, 488)
+scale = Vector2(1.5, 1.5)
+texture_normal = SubResource("AtlasTexture_k1nkd")
+action = "jump"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1551268464]
+libraries/ = SubResource("AnimationLibrary_c3xxp")
+autoplay = &"idle_pistol"
