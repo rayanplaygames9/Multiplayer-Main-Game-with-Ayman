@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://c4q8uea8d6p8k"]
 
 [ext_resource type="Script" uid="uid://cyavwb4iw6rub" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
+[ext_resource type="Texture2D" uid="uid://b1t8eqspo4bb6" path="res://assets/keyboard-&-mouse_sheet_default.png" id="2_fe2o3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl1te"]
+atlas = ExtResource("2_fe2o3")
+region = Rect2(320, 832, 64, 64)
 
 [node name="MainMenu" type="CanvasLayer" unique_id=1482325763]
 script = ExtResource("1_sl1te")
@@ -34,19 +39,74 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/Center/MarginContainer" unique_id=85887884]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/Center/MarginContainer" unique_id=264783232]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/Center/MarginContainer/VBoxContainer" unique_id=225050093]
+[node name="EnetMenu" type="VBoxContainer" parent="Control/Center/MarginContainer/HBoxContainer" unique_id=85887884]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/Center/MarginContainer/HBoxContainer/EnetMenu" unique_id=225050093]
 layout_mode = 2
 text = "Friends Game"
 
-[node name="ButtonJoin" type="Button" parent="Control/Center/MarginContainer/VBoxContainer" unique_id=197219473]
+[node name="ButtonJoin" type="Button" parent="Control/Center/MarginContainer/HBoxContainer/EnetMenu" unique_id=197219473]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Join"
 
-[node name="ButtonQuit" type="Button" parent="Control/Center/MarginContainer/VBoxContainer" unique_id=1133431028]
+[node name="ButtonQuit" type="Button" parent="Control/Center/MarginContainer/HBoxContainer/EnetMenu" unique_id=1133431028]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="TubeMenu" type="VBoxContainer" parent="Control/Center/MarginContainer/HBoxContainer" unique_id=22864832]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelTitle" type="Label" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=382412303]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Friends Game"
+
+[node name="LabelSessionID" type="Label" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=1991769975]
+layout_mode = 2
+text = "Session ID:"
+
+[node name="LineEditSession" type="LineEdit" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=76901776]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LabelUsername" type="Label" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=1448101189]
+layout_mode = 2
+text = "Username:"
+
+[node name="LineEditUsername" type="LineEdit" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=364054743]
+unique_name_in_owner = true
+layout_mode = 2
+max_length = 12
+
+[node name="HSeparator" type="HSeparator" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=641357620]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ButtonJoinTube" type="Button" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=1877496876]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Join"
+
+[node name="ButtonQuitTube" type="Button" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=103475237]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="HSeparator2" type="HSeparator" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=32047437]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="ButtonCreateTube" type="Button" parent="Control/Center/MarginContainer/HBoxContainer/TubeMenu" unique_id=1364384274]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/icon_max_width = 24
+text = "Create Session"
+icon = SubResource("AtlasTexture_sl1te")
